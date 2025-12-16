@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cooking Flipbook Gallery</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      height: 100vh;
+      background: linear-gradient(135deg, #F7E1C5 0%, #FFEFD6 100%);
+      color: #7C4B2D;
+      overflow-x: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 230px;
+      background: linear-gradient(to bottom, #E2B07F 50%, #F7E1C5 50%);
+      padding: 50px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      overflow: hidden;
+      transition: all 0.5s ease;
+    }
+
+    .sidebar::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: #F7E1C5;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+      z-index: 0;
+    }
+
+    .sidebar a {
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 14px 18px;
+      border-radius: 12px;
+      transition: all 0.3s;
+      text-align: center;
+      letter-spacing: 1px;
+      z-index: 1;
+      position: relative;
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: slideIn 0.5s forwards;
+    }
+
+    .sidebar a:nth-child(1){ animation-delay: 0.1s; }
+    .sidebar a:nth-child(2){ animation-delay: 0.2s; }
+    .sidebar a:nth-child(3){ animation-delay: 0.3s; }
+    .sidebar a:nth-child(4){ animation-delay: 0.4s; }
+
+    .sidebar a:hover {
+      background: #F7E1C5;
+      color: #7C4B2D;
+      transform: scale(1.05) translateX(5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
+
+    /* Main Content */
+    .content {
+      margin-left: 250px;
+      padding: 30px;
+      width: calc(100% - 250px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      color: #E2B07F;
+      margin-bottom: 25px;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    /* Floating circles */
+    .floating-shape {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      z-index: 0;
+      animation: float 6s ease-in-out infinite;
+    }
+    .shape1 { width: 80px; height: 80px; top: 50px; left: 150px; }
+    .shape2 { width: 120px; height: 120px; top: 300px; left: 400px; }
+    @keyframes float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+
+    /* Flipbook */
+    .flipbook {
+      overflow: hidden;
+      width: 80%;
+      height: 400px;
+      position: relative;
+      margin-top: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, #fff 0%, #F7E1C5 100%);
+    }
+
+    .flipbook-inner {
+      display: flex;
+      transition: transform 0.6s ease;
+      height: 100%;
+    }
+
+    .flipbook-page {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      flex-shrink: 0;
+      border-radius: 15px;
+      margin: 0 10px;
+      opacity: 0;
+      animation: fadeIn 0.8s forwards;
+    }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    .flipbook-page img {
+      width: 32%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .flipbook-page img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .flipbook-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.4);
+      color: white;
+      font-size: 28px;
+      padding: 10px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .flipbook-button:hover {
+      background-color: rgba(0,0,0,0.6);
+      transform: scale(1.1) translateY(-50%);
+    }
+
+    .flipbook-button-right { right: 10px; }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="shop.html">Shop</a>
+  </nav>
+
+  <!-- Main content -->
+  <div class="content">
+    <header>
+      <h1>Cooking Gallery</h1>
+    </header>
+
+    <!-- floating shapes -->
+    <div class="floating-shape shape1"></div>
+    <div class="floating-shape shape2"></div>
+
+    <!-- Flipbook -->
+    <div class="flipbook">
+      <div class="flipbook-inner" id="flipbook-inner"></div>
+      <button class="flipbook-button flipbook-button-right" onclick="flipRight()">&#10095;</button>
+    </div>
+  </div>
+
+  <script>
+    const images = [
+      "https://i.pinimg.com/originals/98/a8/f6/98a8f686c3fcae5c2bccf1556958e421.gif",
+      "https://i.pinimg.com/originals/d8/42/60/d842607094190b033537e36abf2fdc67.gif",
+      "https://i.pinimg.com/originals/14/6d/3e/146d3e03455c893e1c3ad4b373a95154.gif",
+      "https://i.pinimg.com/originals/5d/7e/c9/5d7ec9502c69810c121df277dc93affb.gif",
+      "https://i.pinimg.com/originals/f8/46/11/f846110ace69e35b633cb55989341ab2.gif",
+      "https://i.pinimg.com/originals/4e/28/9d/4e289dc2f3de0b4870263a3205dae62e.gif"
+    ];
+
+    const flipbookInner = document.getElementById('flipbook-inner');
+    let page = 0;
+    const perPage = 3;
+    const totalPages = Math.ceil(images.length / perPage);
+
+    function createPage(pageIndex) {
+      const pageDiv = document.createElement('div');
+      pageDiv.className = 'flipbook-page';
+      const start = pageIndex * perPage;
+      for (let i = 0; i < perPage; i++) {
+        const imgIndex = start + i;
+        if (imgIndex < images.length) {
+          const img = document.createElement('img');
+          img.src = images[imgIndex];
+          pageDiv.appendChild(img);
+        }
+      }
+      return pageDiv;
+    }
+
+    function updateFlipbook() {
+      flipbookInner.innerHTML = '';
+      for (let i = 0; i < totalPages; i++) {
+        flipbookInner.appendChild(createPage(i));
+      }
+      flipbookInner.style.transform = `translateX(-${page * 100}%)`;
+    }
+
+    function flipRight() {
+      page = (page + 1) % totalPages; // ทำให้วนรอบ
+      updateFlipbook();
+    }
+
+    updateFlipbook();
+  </script>
+
+</body>
+</html>

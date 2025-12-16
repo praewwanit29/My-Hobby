@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog - My Cooking Journey</title>
+  <nav class="top-navbar">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="aboutme.html">Gallery</a>
+    <a href="shop.html">Shop</a>
+  </nav>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #F7E1C5; /* soft cream */
+      color: #7C4B2D; /* deep cocoa text */
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: #E2B07F; /* light caramel link */
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #C58A59; /* warm brown on hover */
+    }
+
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      background: #E2B07F; /* caramel navbar */
+      box-shadow: 0 2px 10px rgba(124, 75, 45, 0.3);
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      z-index: 100;
+    }
+    nav a {
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 12px 18px;
+      border-radius: 8px;
+      transition: background-color 0.4s, color 0.4s;
+    }
+    nav a:hover {
+      background-color: #F7E1C5;
+      color: #7C4B2D;
+    }
+
+    /* Header */
+    header {
+      background: url('https://i.pinimg.com/originals/35/ef/18/35ef18eaf84e24bca409482d8869ae4c.gif') no-repeat center/cover;
+      text-align: center;
+      padding: 80px 20px 60px;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      position: relative;
+      border-bottom: 5px solid #E2B07F;
+      box-shadow: inset 0 0 0 1000px rgba(247, 225, 197, 0.6);
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    }
+    header p {
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    /* Blog Posts Section */
+    #blog-posts {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    #blog-posts h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      color: #7C4B2D;
+    }
+
+    /* Individual Post Styling */
+    .post {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      margin-bottom: 40px;
+      padding: 20px;
+      background-color: #FFFFFF;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(124, 75, 45, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .post:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(124, 75, 45, 0.2);
+    }
+
+    .post-image {
+      flex: 0 0 250px;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    .post-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .post-image img:hover {
+      transform: scale(1.05);
+    }
+
+    .post-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .post h3 {
+      margin-bottom: 10px;
+      color: #E2B07F;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .post-meta {
+      font-size: 0.9rem;
+      color: #C58A59;
+      margin-bottom: 15px;
+    }
+
+    .post-excerpt {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #7C4B2D;
+      margin-bottom: 15px;
+    }
+
+    .read-more {
+      display: inline-block;
+      background-color: #E2B07F;
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    .read-more:hover {
+      background-color: #C58A59;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #E2B07F;
+      color: #7C4B2D;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .post {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .post-image {
+        width: 100%;
+      }
+
+      .post-content {
+        width: 100%;
+      }
+    }
+    .top-navbar {
+  width: 100%;
+  background: #E2B07F;        /* สีคาราเมล */
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  position: sticky;            /* อยู่ด้านบนตลอด */
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(124, 75, 45, 0.2);
+}
+
+.top-navbar a {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.top-navbar a:hover {
+  background: #F7E1C5;
+  color: #7C4B2D;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Welcome to My Cooking Blog</h1>
+    <p>Where flavor and creativity meet in the kitchen!</p>
+  </header>
+
+  <!-- Blog Posts -->
+  <section id="blog-posts">
+    <h2>Blog Example of Cooking</h2>
+
+    <!-- Post 1 -->
+    <article class="post">
+      <div class="post-image">
+        <img src="https://i.pinimg.com/originals/0c/ec/d4/0cecd418a823a2702cf7e99fb19057dc.gif" alt="Food being tossed inside a frying pan over heat">
+      </div>
+      <div class="post-content">
+        <h3>Food Tossing in a Hot Pot</h3>
+        <p class="post-meta">Posted on July 10, 2025</p>
+        <p class="post-excerpt">
+          To create this lively stir‑fry, heat a pan, add oil, and toss ingredients quickly so they cook evenly and stay crisp.
+        </p>
+      </div>
+    </article>
+
+    <!-- Post 2 -->
+    <article class="post">
+      <div class="post-image">
+        <img src="https://i.pinimg.com/originals/48/15/a3/4815a391cdf78da866f00567c1383907.gif" alt="Hands slicing a tomato with a knife">
+      </div>
+      <div class="post-content">
+        <h3>Fry the Bacon on a Pan</h3>
+        <p class="post-meta">Posted on July 15, 2025</p>
+        <p class="post-excerpt">
+          Fry bacon in a hot pan—get crispy edges, delicious aroma, and perfect texture.
+        </p>
+      </div>
+    </article>
+
+    <!-- Post 3 -->
+    <article class="post">
+      <div class="post-image">
+        <img src="https://i.pinimg.com/originals/84/c7/47/84c74759a690af8199cf82cf949f1f75.gif" alt="Ingredients being mixed in a bowl with a spoon">
+      </div>
+      <div class="post-content">
+        <h3>Stir-Fried Shrimp Fried Rice</h3>
+        <p class="post-meta">Posted on August 5, 2025 </p>
+        <p class="post-excerpt">
+          Stir-fry shrimp, rice, veggies and egg—season with soy sauce and sesame oil for a tasty, quick meal.
+        </p>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 My Cooking Website</p>
+  </footer>
+
+</body>
+</html>

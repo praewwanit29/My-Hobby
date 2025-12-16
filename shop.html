@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop - Cooking Gallery</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #F7E1C5 0%, #FFEFD6 100%);
+      color: #7C4B2D;
+      overflow-x: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 230px;
+      background: linear-gradient(to bottom, #E2B07F 50%, #F7E1C5 50%);
+      padding: 50px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      overflow: hidden;
+    }
+
+    .sidebar a {
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 14px 18px;
+      border-radius: 12px;
+      transition: all 0.3s;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .sidebar a:hover {
+      background: #F7E1C5;
+      color: #7C4B2D;
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Main content */
+    .content {
+      margin-left: 250px;
+      padding: 30px;
+      width: calc(100% - 250px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      color: #E2B07F;
+      margin-bottom: 25px;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    /* Products grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      width: 100%;
+      max-width: 1000px;
+      margin-top: 20px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .product-card h3 {
+      margin: 10px 0 5px 0;
+      font-size: 1.1rem;
+      color: #7C4B2D;
+    }
+
+    .product-card p {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      color: #7C4B2D;
+    }
+
+    .product-card button {
+      margin-bottom: 15px;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #E2B07F;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .product-card button:hover {
+      background: #F7E1C5;
+      color: #7C4B2D;
+      transform: scale(1.05);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="aboutme.html">Gallery</a>
+    <a href="shop.html">Shop</a>
+  </nav>
+
+  <!-- Main content -->
+  <div class="content">
+    <header>
+      <h1>Handmade Shop</h1>
+    </header>
+
+    <!-- Products grid -->
+    <div class="products">
+      <div class="product-card">
+        <img src="https://i.pinimg.com/1200x/e6/ae/2f/e6ae2f50517448b80f467d1f35390e0f.jpg" alt="Product 1">
+        <h3>Tomato Sauce</h3>
+        <p>$8.50</p>
+        <button>Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <img src="https://i.pinimg.com/736x/f0/6b/df/f06bdf0be32682211878d21136d79bb0.jpg" alt="Product 2">
+        <h3>Easy Ramyoen</h3>
+        <p>$12.00</p>
+        <button>Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <img src="https://i.pinimg.com/1200x/4e/7d/04/4e7d0485d48f7493f00dd2a2af6c5b9c.jpg" alt="Product 3">
+        <h3>Cookies</h3>
+        <p>$25.00</p>
+        <button>Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <img src="https://i.pinimg.com/736x/38/5f/1c/385f1c1a864cce92cebad34db3088c01.jpg" alt="Product 4">
+        <h3>Lemon Jam</h3>
+        <p>$6.50</p>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
